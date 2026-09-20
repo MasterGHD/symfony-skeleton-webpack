@@ -1,9 +1,9 @@
-name: Weekly Composer Update
+name: Bi-weekly Composer Update
 
 on:
   schedule:
-    # Runs at 01:00 UTC every Sunday
-    - cron: '0 1 * * 0'
+    # Runs at 01:00 UTC on the 1st and 15th of each month
+    - cron: '0 1 1,15 * *'
   workflow_dispatch: # Allows manual triggering
 
 permissions:
@@ -69,8 +69,8 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'chore: weekly composer update'
-          title: 'Weekly Composer Update'
+          commit-message: 'chore: bi-weekly composer update'
+          title: 'Bi-weekly Composer Update'
           body: |
             Automated composer update run on ${{ steps.date.outputs.date }}.
             
